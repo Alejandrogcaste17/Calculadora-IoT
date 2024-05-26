@@ -1,12 +1,12 @@
 from flask import Flask, render_template, request, jsonify
 
-app = Flask(__name__)
+application = Flask(__name__)
 
-@app.route("/")
+@application.route("/")
 def index():
     return render_template("index.html")
 
-@app.route("/calculate", methods=["POST"])
+@application.route("/calculate", methods=["POST"])
 def calculate():
     num1 = float(request.form["num1"])
     num2 = float(request.form["num2"])
@@ -29,4 +29,4 @@ def calculate():
     return jsonify({"result": result})
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    application.run(host="0.0.0.0", port=80, debug=True)
